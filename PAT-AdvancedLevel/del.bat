@@ -1,1 +1,1 @@
-del *.exe
+del *.exe,*.txt
