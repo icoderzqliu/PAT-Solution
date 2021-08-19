@@ -5,6 +5,12 @@
 		"string": "cpp",
 		"string_view": "cpp",
 		"iosfwd": "cpp",
-		"iomanip": "cpp"
+		"iomanip": "cpp",
+		"deque": "cpp",
+		"list": "cpp",
+		"unordered_map": "cpp",
+		"unordered_set": "cpp",
+		"vector": "cpp",
+		"forward_list": "cpp"
 	}
 }
