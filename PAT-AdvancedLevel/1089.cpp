@@ -4,7 +4,7 @@ using namespace std;
 const int N = 110;
 
 int n;
-vector<int> a, b, tmp;
+int a[N], b[N];
 
 int main()
 {
@@ -16,23 +16,43 @@ int main()
     freopen("out.txt", "w", stdout);
 #endif
     cin >> n;
-    a.resize(n), b.resize(n), tmp.resize(n);
     for (int i = 0; i < n; ++i)
-    {
-        cin >> tmp[i];
-    }
-    a = tmp;
+        cin >> a[i];
     for (int i = 0; i < n; ++i)
-    {
         cin >> b[i];
+    int i, j;
+    for (i = 0; i < n - 1 && b[i] <= b[i + 1]; ++i)
+        ;
+    for (j = i + 1; a[j] == b[j] && j < n; ++j)
+        ;
+    if (j == n)
+    {
+        cout << "Insertion Sort\n";
+        sort(a, a + i + 2);
     }
-    bool isInsert = true;
+    else
+    {
+        cout << "Merge Sort\n";
+        int k = 1, flag = 1;
+        while (flag)
+        {
+            flag = 0;
+            for (int i = 0; i < n; ++i)
+            {
+                if (a[i] != b[i])
+                    flag = 1;
+            }
+            k *= 2;
+            for (int i = 0; i + k <= n; i += k)
+            {
+                sort(a + i, a + i + k);
+            }
+            sort(a + n / k * k, a + n);
+        }
+    }
     for (int i = 0; i < n; ++i)
     {
-        for (int j = 0; j < n; ++j)
-        {
-            sort(a.begin() + i, a.begin() + j);
-        }
+        cout << a[i] << (i == n - 1 ? "" : " ");
     }
     return 0;
 }
